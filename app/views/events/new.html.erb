@@ -1,0 +1,68 @@
+
+<div class="container">
+	 <%=simple_form_for @event do |f|%>
+     <div class="form-group">
+   <%= f.input :admin_id, :as => :hidden, :input_html => { :value => "#{current_user.id}" } %>
+   </div>
+  <div class="form-group">
+  	 <%= f.input :start_date, placeholder: "Start date", class:"form-control", id: "inputStart"%>
+  	</div>
+  	
+  <div class="form-row">
+    <div class="form-group col-md-6">     
+      <label for="inputTitle">Titre:</label>
+      <%= f.text_field :title, placeholder: "Ecrivez votre titre", class:"form-control", id: "inputTitle"%>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputDuration">Durée:</label>
+      <%= f.text_field :duration, placeholder: "Durée en minutes et multiple de 5", class:"form-control", id: "inputDuration"%>   
+    </div>
+  </div>
+ <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputPrice">Prix:</label>
+      <%= f.text_field :price, placeholder: "Prix en euro", class:"form-control", id: "inputPrice"%>      
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputLocation">Lieu:</label>
+      <%= f.text_field :location, placeholder: "Adresse précise", class:"form-control", id: "inputLocation"%>  
+      
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputDescription">Description:</label>
+     <%= f.text_area :description, placeholder: "Description de l'évenement...", class:"form-control", id: "inputDescription"%> 
+  </div>
+  <div class="form-group">
+ <%= f.submit 'Créer' ,class:"btn btn-outline-danger"%>
+  </div>
+
+  <%end%>
+
+</div>
+
+<% if @event.errors.any? %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Oups punaise!</strong> You should check in on some of those fields below.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <p>Nous n'avons pas réussi à créer l'evenement pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @event.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    <% end %>
+
+
+    <% if @event.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+           A simple danger alert—check it out!
+     </div>            <p>Nous n'avons pas réussi à créer l'evenement pour la (ou les) raison(s) suivante(s) :</p>
+           <ul>
+             <% @event.errors.full_messages.each do |message| %>
+             <li><%= message %></li>
+             <% end %>
+           </ul>
+     <% end %>

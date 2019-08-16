@@ -1,0 +1,33 @@
+<div class="jumbotron" style="background-image: url(https://www.fgsmartevent.com/clients/smart-event/images/bandeau/grande_image/bandeau_titre_7_evenement_grand_public_couleur.jpg); background-repeat: no-repeat; background-size: cover;" >
+<div class="container">
+    <h1 class="display-3" style="color: white;">Bienvenue sur le site evènementiel!</h1>
+    <p style="color: white;">Soyez prêt pour le prochain évènement!</p>
+  </div>
+</div>
+</div>
+
+<table class="table">
+ <thead class="thead-dark">
+   <tr><center>
+     <th scope="col" class="text-primary">Numero</th>
+     <th scope="col" class="text-danger">Titre</th>
+     <th scope="col" class="text-danger">Description</th>
+     <th scope="col" class="text-danger">Price</th>
+     <th scope="col" class="text-danger">Localisation</th>    
+   </center>    </tr>
+ </thead>
+ <tbody>
+     <%@event.length.times do |i|%>
+   <tr>
+     <td scope="row"><%=@event[i].id%></td>
+     <td><%=@event[i].title%>
+     	 <a class="badge badge-warning"  href="/events/<%= @event[i].id%>">en savoir plus
+     	 </a>       
+     </td>
+     <td><%=@event[i].description%></td>
+     <td class="text-danger"><%=@event[i].price%> €</td>
+     <td><%=@event[i].location%></td>
+   </tr>
+   <%end%>
+ </tbody>
+</table>

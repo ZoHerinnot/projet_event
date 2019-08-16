@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profil</title>
+</head>
+<body>
+<div>
+    <p>
+      <strong>Email:</strong>
+      <%= @user.email %>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= @user.descritpion %>
+    </p>
+
+    <p>
+      <strong>First name:</strong>
+      <%= @user.first_name %>
+    </p>
+
+    <p>
+      <strong>Last name:</strong>
+      <%= @user.last_name %>
+    </p>
+</div>
+  <span class="badge badge-pill badge-dark"><%= link_to 'Modifier profil', edit_user_path(@user) %>  </span>
+<div>
+    <h3> liste de vos événement </h3>
+    <p>
+        Titre :
+        <%@event.each do |i|%>
+            <%if i.admin.id == @user.id%>
+                <%=i.title%></br><a class="badge badge-warning"  href="/events/<%= i.id%>">en savoir plus
+       </a> 
+            <%end%>
+        <%end%>
+</div>
+</body>
+</html>
